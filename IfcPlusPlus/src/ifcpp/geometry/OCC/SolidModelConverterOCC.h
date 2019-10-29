@@ -757,7 +757,7 @@ public:
 			const double dy = rectangular_pyramid->m_YLength->m_value*0.5*length_factor;
 			const double dz = rectangular_pyramid->m_Height->m_value*0.5*length_factor;
 
-			TopoDS_Shape pyramid_shape = BRepPrimAPI_MakeWedge( dx, dy, dz, dx*0.5, dz*0.5, dx*0.5, dz*0.5 );
+			TopoDS_Solid pyramid_shape = BRepPrimAPI_MakeWedge( dx, dy, dz, dx*0.5, dz*0.5, dx*0.5, dz*0.5 );
 			if( !pyramid_shape.IsNull() )
 			{
 				GeomUtilsOCC::applyMatrixToShape( pyramid_shape, primitive_placement_matrix );
@@ -807,7 +807,7 @@ public:
 			double height = right_circular_cylinder->m_Height->m_value*length_factor;
 			double radius = right_circular_cylinder->m_Radius->m_value*length_factor;
 
-			TopoDS_Shape cylinder_shape = BRepPrimAPI_MakeCylinder( radius, height, M_PI*2.0 );
+			TopoDS_Solid cylinder_shape = BRepPrimAPI_MakeCylinder( radius, height, M_PI*2.0 );
 			GeomUtilsOCC::applyMatrixToShape( cylinder_shape, primitive_placement_matrix );
 			item_data->addShape( cylinder_shape );
 			return;
